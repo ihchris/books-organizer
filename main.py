@@ -32,6 +32,17 @@ def load_books():
     except FileNotFoundError:
         books = []
 
+def remove_book():
+    """Removes a book from the list."""
+    title = input("Enter the title of the book you want to remove: ")
+    for book in books:
+        if book['title'] == title:
+            books.remove(book)
+            print(f"Book with title '{title}' removed successfully.")
+            break
+    else:
+        print(f"Book with title '{title}' not found.")
+
 def main():
     """Main loop for the program."""
     load_books()
@@ -40,6 +51,7 @@ def main():
         print("\n1. Add a book")
         print("2. View books")
         print("3. Save and exit")
+        print("4. Remove a book")
         choice = input("Choose an option: ")
         
         if choice == '1':
@@ -53,6 +65,9 @@ def main():
             save_books()
             print("Books saved. Exiting...")
             break
+        elif choice == '4':
+            remove_book()
+            print("Books saved. Exiting...")
         else:
             print("Invalid choice. Please try again.")
 
